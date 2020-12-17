@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!--    起别名-->
+    <typeAliases>
+        <package name="cn.sg.pojo"/>
+    </typeAliases>
+
+    <mappers>
+        <mapper class="cn.sg.dao.UserMapper"/>
+        <mapper class="cn.sg.dao.CommodityMapper"/>
+    </mappers>
+
+
+</configuration>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sg.dao.CommodityMapper">
+    <select id="selectAllBook" resultType="books">
+        select * from books;
+    </select>
+
+    <select id="selectAllClothes" resultType="clothes">
+        select * from clothes;
+    </select>
+
+    <update id="sellBook" parameterType="books">
+        update books set bookCounts=bookCounts-1 where bookID=#{bookID};
+    </update>
+
+
+    <update id="sellBookByName" parameterType="String">
+        update books set bookCounts=bookCounts-1 where bookName=#{bookName};
+    </update>
+
+    <select id="Count" resultType="int">
+        select bookCounts from books where bookID=#{bookID};
+    </select>
+
+<!--    通过bookName查看还有多少本书-->
+    <select id="CountByName" parameterType="String" resultType="int">
+        select BookCounts from books where bookName=#{bookName};
+    </select>
+
+    <select id="selectBookById" resultType="books">
+        select * from books where bookID=#{bookID};
+    </select>
+
+    <insert id="addOrder">
+        insert into `order` (infor,price,username)
+        values (#{info},#{price},#{username})
+    </insert>
+
+    <select id="selectAllOrder"  resultType="order">
+        select * from `order` where username=#{username};
+    </select>
+
+    <insert id="addCart">
+        insert into `cart` (infor,username,release_time)
+        values (#{info},#{username},#{release_time})
+    </insert>
+
+    <select id="selectAllCart" resultType="cart">
+        select * from `cart` where username=#{username};
+    </select>
+
+    <delete id="deleteCart" parameterType="int">
+        delete from `cart` where id=#{id};
+    </delete>
+
+    <insert id="addZK">
+        insert into `zk` (seller_name,seller_number,kinds)
+        values (#{seller_name},#{seller_number},#{kinds})
+    </insert>
+
+<!--    查询平台所有订单-->
+    <select id="selectZK" resultType="zk">
+        select * from   `zk` ;
+    </select>
+</mapper>
